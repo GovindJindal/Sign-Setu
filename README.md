@@ -1,4 +1,4 @@
-# SignSetu
+# Sign Setu
 
 _Bridging communication between hearing individuals and the deaf/hard-of-hearing community_
 
@@ -144,13 +144,6 @@ Sign-Setu/
 ---
 
 ## API Documentation
-
-### Base URL
-
-```
-Production: https://signsetu-ai.onrender.com
-Development: http://localhost:8000
-```
 
 ### Endpoints
 
