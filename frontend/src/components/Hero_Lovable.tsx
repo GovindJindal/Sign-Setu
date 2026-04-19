@@ -200,11 +200,10 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mx-auto mt-20 grid grid-cols-3 gap-6 md:gap-12 max-w-3xl"
+          className="mx-auto mt-20 grid grid-cols-2 gap-6 md:gap-12 max-w-2xl"
         >
           {[
             { v: "63M+", l: "Deaf people in India" },
-            { v: "2,000+", l: "ISL signs trained" },
             { v: "<200ms", l: "Translation latency" },
           ].map((s) => (
             <div key={s.l}>
