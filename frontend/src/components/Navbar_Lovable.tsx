@@ -1,7 +1,8 @@
-import { Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+"use client";
+
+import Link from "next/link";
+import { motion } from "motion/react";
 import { useState } from "react";
-import logo from "@/assets/sign-setu-logo.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -21,10 +22,10 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-4"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="relative flex h-16 md:h-20 items-center rounded-2xl bg-white/5 backdrop-blur-md ring-1 ring-white/10 px-4 shadow-glow">
             <img
-              src={logo}
+              src="/sign-setu-logo.png"
               alt="Sign Setu logo"
               className="h-14 md:h-16 w-auto object-contain mix-blend-screen [filter:brightness(1.4)_contrast(1.1)_hue-rotate(5deg)_drop-shadow(0_0_12px_rgba(167,139,250,0.55))]"
             />
@@ -61,7 +62,10 @@ export function Navbar() {
           })}
         </nav>
 
-        <button className="group relative overflow-hidden rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:scale-105">
+        <button 
+          onClick={() => window.open("/upload", "_blank")}
+          className="group relative overflow-hidden rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform hover:scale-105"
+        >
           <span className="relative z-10">Try now →</span>
           <span className="absolute inset-0 bg-gradient-hero opacity-0 transition-opacity group-hover:opacity-100" />
         </button>

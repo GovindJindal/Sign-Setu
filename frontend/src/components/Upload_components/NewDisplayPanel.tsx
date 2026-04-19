@@ -25,6 +25,7 @@ export function NewDisplayPanel({ data }: ChildProps) {
     const initializeThreeJS = () => {
       try {
         console.log("Initializing Three.js...");
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const { setAnimationSpeed } = require("@/hooks/NewMain");
         setAnimationSpeed(0.08); // Initialize default speed and gap
         NewThree("label", "container");
@@ -172,6 +173,7 @@ export function NewDisplayPanel({ data }: ChildProps) {
                 step="0.01"
                 defaultValue="0.08"
                 onChange={(e) => {
+                  // eslint-disable-next-line @typescript-eslint/no-require-imports
                   const { setAnimationSpeed } = require("@/hooks/NewMain");
                   setAnimationSpeed(parseFloat(e.target.value));
                 }}

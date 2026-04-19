@@ -254,7 +254,7 @@ const SYNONYM_MAP: Record<string, string> = {
   music:'music', song:'music', dance:'dance',
   game:'game', play:'play', sport:'football',
   work:'work', job:'work', career:'work',
-  class:'class', school:'school', learn:'learn', study:'study',
+  class:'class', learn:'learn', study:'study',
   problem:'problem', issue:'problem', trouble:'trouble',
   idea:'idea', plan:'plan', think:'think',
 };

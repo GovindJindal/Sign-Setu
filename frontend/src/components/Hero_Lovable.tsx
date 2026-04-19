@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+"use client";
+
+import { motion } from "motion/react";
 import { Sparkles, ArrowRight, Play, Hand, Ear, MessageCircle, Waves, Eye, Languages } from "lucide-react";
 
 export function Hero() {
@@ -175,15 +177,21 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 flex flex-wrap items-center justify-center gap-4"
         >
-          <button className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-hero px-8 py-4 text-sm font-semibold text-foreground shadow-glow transition-transform hover:scale-105">
+          <button 
+            onClick={() => window.open("/speech-to-text", "_blank")}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-hero px-8 py-4 text-sm font-semibold text-foreground shadow-glow transition-transform hover:scale-105"
+          >
             Start Communicating
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
-          <button className="inline-flex items-center gap-3 rounded-full glass px-6 py-4 text-sm font-medium transition-colors hover:bg-white/5">
+          <button 
+            onClick={() => window.open("/upload", "_blank")}
+            className="inline-flex items-center gap-3 rounded-full glass px-6 py-4 text-sm font-medium transition-colors hover:bg-white/5"
+          >
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20">
               <Play className="h-3 w-3 fill-primary text-primary" />
             </span>
-            Watch demo
+            Upload to Translate
           </button>
         </motion.div>
 
