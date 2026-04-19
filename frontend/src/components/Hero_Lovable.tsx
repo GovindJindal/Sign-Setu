@@ -167,7 +167,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mx-auto mt-10 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed"
         >
-          MIME.ai turns Indian Sign Language into spoken words — and voice into signs — in real time.
+          SignSetu turns Indian Sign Language into spoken words — and voice into signs — in real time.
           Build empathy, foster awareness, and connect inclusively with the Deaf and hard-of-hearing community.
         </motion.p>
 
@@ -177,14 +177,14 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 flex flex-wrap items-center justify-center gap-4"
         >
-          <button 
+          <button
             onClick={() => window.open("/speech-to-text", "_blank")}
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-hero px-8 py-4 text-sm font-semibold text-foreground shadow-glow transition-transform hover:scale-105"
           >
             Start Communicating
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
-          <button 
+          <button
             onClick={() => window.open("/upload", "_blank")}
             className="inline-flex items-center gap-3 rounded-full glass px-6 py-4 text-sm font-medium transition-colors hover:bg-white/5"
           >

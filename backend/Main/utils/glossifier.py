@@ -66,8 +66,8 @@ def get_synonym_in_vocab_spacy(word):
         "Authorization": f"Bearer {settings.OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
         "HTTP-Referer": "http://localhost",
-        "X-Title": "Mime AI Glossifier",
-        "X-User": "MimeAIUser"
+        "X-Title": "SignSetu AI Glossifier",
+        "X-User": "SignSetuAIUser"
     }
 
     payload = {

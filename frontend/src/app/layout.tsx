@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mime.ai — Text, Audio & Video to ASL Sign Language",
+  title: "SignSetu — Text, Audio & Video to ASL Sign Language",
   description: "Convert text, audio, and video into American Sign Language (ASL) gloss with real-time 3D visualization.",
 };
 

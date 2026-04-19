@@ -1,5 +1,5 @@
 """
-WSGI config for mime_ai project.
+WSGI config for signsetu_ai project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -11,10 +11,10 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl font-bold">MIME.ai</span>
+              <span className="text-2xl font-bold">SignSetu</span>
             </div>
             <p className="text-gray-400 text-lg mb-6 max-w-md">
-              Breaking communication barriers through innovative sign language technology. 
+              Breaking communication barriers through innovative sign language technology.
               Making the world more inclusive, one conversation at a time.
             </p>
             <div className="flex space-x-4">
@@ -58,7 +58,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400">
-            © 2025 MIME.ai. All rights reserved. Built with ❤️ for accessibility.
+            © 2025 SignSetu. All rights reserved. Built with ❤️ for accessibility.
           </p>
         </div>
       </div>

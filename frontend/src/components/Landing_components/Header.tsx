@@ -13,16 +13,16 @@ const Header = () => {
       <div className="flex justify-between items-center mb-2 px-4">
         <div className="flex items-center space-x-2 ml-6">
           <div className="text-3xl font-light text-white tracking-widest">
-            MIME<span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400 font-semibold">.ai</span>
+            SIGNSETU<span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400 font-semibold">.ai</span>
           </div>
         </div>
-{/* 
+        {/* 
         <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl p-8 text-center min-h-48 flex items-center justify-center hover:bg-white/15 transition-all duration-300 relative">
           <div className="text-xs text-white/60 absolute top-4 left-4">
             Minimal & Hover
           </div>
           <div className="text-4xl font-light text-white tracking-widest">
-            MIME<span className="text-teal-300 font-bold">.ai</span>
+            SIGNSETU<span className="text-teal-300 font-bold">.ai</span>
           </div>
         </div> */}
 

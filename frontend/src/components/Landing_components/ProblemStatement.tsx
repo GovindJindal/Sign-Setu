@@ -42,9 +42,9 @@ const ProblemStatement = () => {
 
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 animate-fadeInUp" style={{ animationDelay: '0.6s' }}>
           <p className="text-xl md:text-2xl text-gray-800 text-center leading-relaxed">
-            Millions of deaf and hard-of-hearing individuals face daily communication barriers. 
-            <span className="font-bold text-blue-600"> MIME.ai</span> bridges this gap by converting 
-            spoken or written language into sign language in real-time, making digital communication 
+            Millions of deaf and hard-of-hearing individuals face daily communication barriers.
+            <span className="font-bold text-blue-600"> SignSetu</span> bridges this gap by converting
+            spoken or written language into sign language in real-time, making digital communication
             <span className="font-bold text-indigo-600"> inclusive and accessible</span>.
           </p>
         </div>

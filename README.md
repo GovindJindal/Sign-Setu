@@ -1,16 +1,16 @@
-# Mime.ai
+# SignSetu
 
 _Bridging communication between hearing individuals and the deaf/hard-of-hearing community_
 
-![Mime.ai Landing Page](./backend/images/landing-page.png)
+![SignSetu Landing Page](./backend/images/landing-page.png)
 
-![Mime.ai Upload Interface](./backend/images/upload-video.png)
+![SignSetu Upload Interface](./backend/images/upload-video.png)
 
-![Mime.ai Speech-to-Text](./backend/images/audio-upload.png)
+![SignSetu Speech-to-Text](./backend/images/audio-upload.png)
 
-![Mime.ai Processing Text](./backend/images/processing-text.png)
+![SignSetu Processing Text](./backend/images/processing-text.png)
 
-![Mime.ai ASL Gloss Output](./backend/images/signs-rendered.png)
+![SignSetu ASL Gloss Output](./backend/images/signs-rendered.png)
 
 ---
 
@@ -35,9 +35,9 @@ _Bridging communication between hearing individuals and the deaf/hard-of-hearing
 
 ## About
 
-Mime.ai is a web application designed to bridge the communication gap between hearing individuals and the deaf/hard-of-hearing community. The platform converts text, audio, and video input into American Sign Language (ASL) gloss notation, making it easier for anyone to communicate effectively and inclusively.
+Sign Setu is a web application designed to bridge the communication gap between hearing individuals and the deaf/hard-of-hearing community. The platform converts text, audio, and video input into American Sign Language (ASL) gloss notation, making it easier for anyone to communicate effectively and inclusively.
 
-Whether you want to convert spoken words from an audio file, transcribe video content, or simply type text to be translated into ASL-compatible gloss, Mime.ai provides a seamless solution.
+Whether you want to convert spoken words from an audio file, transcribe video content, or simply type text to be translated into ASL-compatible gloss, Sign Setu provides a seamless solution.
 
 > **Studying ASL fosters awareness and sensitivity toward the Deaf and hard of hearing community.**
 
@@ -45,7 +45,7 @@ Whether you want to convert spoken words from an audio file, transcribe video co
 
 ## Features
 
-Mime.ai offers multiple input methods to convert your content into ASL gloss:
+Sign Setu offers multiple input methods to convert your content into ASL gloss:
 
 ### 1. Text to ASL Gloss
 - Input plain text and receive ASL-compatible gloss notation
@@ -113,7 +113,7 @@ Mime.ai offers multiple input methods to convert your content into ASL gloss:
 ## Project Structure
 
 ```
-Mime_ai/
+SignSetu_ai/
 ├── frontend/                      # Next.js frontend application
 │   ├── src/
 │   │   ├── app/                   # Next.js app directory
@@ -182,7 +182,7 @@ Mime_ai/
 ### Base URL
 
 ```
-Production: https://mime-ai.onrender.com
+Production: https://signsetu-ai.onrender.com
 Development: http://localhost:8000
 ```
 
@@ -204,22 +204,22 @@ Convert text, audio, or video content to ASL gloss.
 
 ```bash
 # Text to Gloss
-curl -X POST https://mime-ai.onrender.com/api/process/ \
+curl -X POST https://signsetu-ai.onrender.com/api/process/ \
   -F "category=text" \
   -F "text=Hello how are you"
 
 # Audio to Gloss
-curl -X POST https://mime-ai.onrender.com/api/process/ \
+curl -X POST https://signsetu-ai.onrender.com/api/process/ \
   -F "category=audio" \
   -F "file=@audio.mp3"
 
 # Video to Gloss
-curl -X POST https://mime-ai.onrender.com/api/process/ \
+curl -X POST https://signsetu-ai.onrender.com/api/process/ \
   -F "category=video" \
   -F "file=@video.mp4"
 
 # Translate to English then Gloss
-curl -X POST https://mime-ai.onrender.com/api/process/ \
+curl -X POST https://signsetu-ai.onrender.com/api/process/ \
   -F "category=translate" \
   -F "text=Bonjour comment allez-vous"
 ```
@@ -274,7 +274,7 @@ Server health check.
 
 ## Vocabulary Database
 
-Mime.ai includes a comprehensive vocabulary database of **1,481 ASL-compatible words** located in `backend/Main/vocab/animation_words.txt`.
+Sign Setu includes a comprehensive vocabulary database of **1,481 ASL-compatible words** located in `backend/Main/vocab/animation_words.txt`.
 
 The vocabulary includes:
 - Common words (a-z)
@@ -295,7 +295,7 @@ The system uses AI-powered synonym matching to find the closest vocabulary match
 
 ## Getting Started
 
-Follow these instructions to set up Mime.ai locally on your machine.
+Follow these instructions to set up Sign Setu locally on your machine.
 
 ### Prerequisites
 
@@ -452,8 +452,8 @@ Open [http://localhost:8000](http://localhost:8000) in your browser - you should
 
 ## Live Demos
 
-- **Frontend**: [https://mime-ai-7vxu.vercel.app/](https://mime-ai-7vxu.vercel.app/)
-- **Backend**: [https://mime-ai.onrender.com/](https://mime-ai.onrender.com/)
+- **Frontend**: [https://signsetu-ai-7vxu.vercel.app/](https://signsetu-ai-7vxu.vercel.app/)
+- **Backend**: [https://signsetu-ai.onrender.com/](https://signsetu-ai.onrender.com/)
 
 > **Note**: The backend is deployed on Render's free tier and falls asleep after 15 minutes of inactivity. The first request after sleep may take 30-60 seconds to wake up. Please be patient!
 
@@ -461,24 +461,11 @@ Open [http://localhost:8000](http://localhost:8000) in your browser - you should
 
 ## Contributors
 
-Mime.ai was built with love by:
+Sign Setu was built with love by:
 
-- **Kartik** ([@kartik-m39](https://github.com/kartik-m39))
-- **Madhav** ([@madhavv-xd](https://github.com/madhavv-xd))
-- **Rachit** ([@rachitgoyal3313](https://github.com/rachitgoyal3313))
-- **Divyansh** ([@Divy13ansh](https://github.com/Divy13ansh))
-
----
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## Acknowledgments
-
-- [AssemblyAI](https://www.assemblyai.com/) for providing excellent speech-to-text services
-- [OpenRouter](https://openrouter.ai/) for AI-powered synonym mapping
-- The ASL community for their continued support and inspiration
-- All open-source projects that made this possible
+- **Govind Jindal** ([@govindjindal](https://github.com/govindjindal))
+- **Piyush Sharma** ([@piyushCodes7](https://github.com/piyushCodes7))
+- **Asmit Chitkara** ([@asmit538](https://github.com/asmit538))
+- **DevKabir Deora** ([@devkabirdeora](https://github.com/devkabirdeora))
+- **Lakshman Bansal** ([@lakshman-bansal](https://github.com/lakshman-bansal))
+- **Deepanshu Arora** ([@deepanshu3540beai25-jpg](https://github.com/deepanshu3540beai25-jpg))

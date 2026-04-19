@@ -41,8 +41,8 @@ const Hero = () => {
 
           <h2 className="text-white text-lg md:text-xl font-medium text-center z-10 max-w-4xl animate-fadeInUp drop-shadow-lg" style={{ animationDelay: '0.3s' }}>
             Studying ASL fosters awareness and sensitivity toward the Deaf and
-            hard of hearing community. 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400 font-semibold"> MIME.ai</span> is all you need to
+            hard of hearing community.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400 font-semibold"> SignSetu</span> is all you need to
             communicate effectively and inclusively with them.
           </h2>
 

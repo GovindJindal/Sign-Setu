@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Ping Render
         run: |
-          curl -s -o /dev/null -w "%{http_code}" https://mime-ai.onrender.com/api/ping
+          curl -s -o /dev/null -w "%{http_code}" https://signsetu-ai.onrender.com/api/ping

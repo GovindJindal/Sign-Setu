@@ -36,7 +36,7 @@ const Features = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fadeInUp">
-            What MIME.ai Offers
+            What SignSetu Offers
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
@@ -46,7 +46,7 @@ const Features = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp"
               style={{ animationDelay: `${index * 0.2}s` }}

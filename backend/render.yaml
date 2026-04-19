@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mime-ai
+    name: signsetu-ai
     env: python
     buildCommand: |
       apt-get update
@@ -9,7 +9,7 @@ services:
     startCommand: python manage.py runserver 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: mime_ai.settings
+        value: signsetu_ai.settings
       - key: PYTHONUNBUFFERED
         value: "1"
       - key: ASSEMBLYAI_API_KEY

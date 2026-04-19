@@ -1,4 +1,4 @@
-# mime_ai/Main/utils/assemblyai_transcriber.py
+# signsetu_ai/Main/utils/assemblyai_transcriber.py
 
 import requests
 import time

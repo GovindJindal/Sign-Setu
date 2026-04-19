@@ -1,5 +1,5 @@
 """
-ASGI config for mime_ai project.
+ASGI config for signsetu_ai project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
