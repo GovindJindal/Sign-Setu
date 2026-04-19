@@ -4,11 +4,13 @@ _Bridging communication between hearing individuals and the deaf/hard-of-hearing
 
 ![SignSetu Landing Page](./backend/images/landing-page.png)
 
+![SignSetu Text to ASL](./backend/images/text-upload.png)
+
 ![SignSetu Upload Interface](./backend/images/upload-video.png)
 
 ![SignSetu Speech-to-Text](./backend/images/audio-upload.png)
 
-![SignSetu Processing Text](./backend/images/processing-text.png)
+![SignSetu Processing Speech](./backend/images/processing-speech.png)
 
 ![SignSetu ASL Gloss Output](./backend/images/signs-rendered.png)
 
@@ -113,66 +115,30 @@ Sign Setu offers multiple input methods to convert your content into ASL gloss:
 ## Project Structure
 
 ```
-SignSetu_ai/
-├── frontend/                      # Next.js frontend application
+Sign-Setu/
+├── backend/                # Django REST Framework Backend
+│   ├── core/               # Main project settings and configuration
+│   ├── api/                # API endpoints for text processing/NLP
+│   ├── manage.py           # Django management script
+│   ├── requirements.txt    # Python dependencies
+│   └── .env                # Backend environment variables
+│
+├── frontend/               # Next.js Frontend (App Router)
+│   ├── public/             # Static assets
+│   │   └── models/         # 3D GLB models (xbot, ybot) for sign language
 │   ├── src/
-│   │   ├── app/                   # Next.js app directory
-│   │   │   ├── page.tsx           # Landing page
-│   │   │   ├── layout.tsx         # Root layout
-│   │   │   ├── globals.css        # Global styles
-│   │   │   ├── upload/            # Upload interface page
-│   │   │   │   └── page.tsx
-│   │   │   └── speech-to-text/    # Speech-to-text page
-│   │   │       └── page.tsx
-│   │   ├── components/            # React components
-│   │   │   ├── Landing_components/
-│   │   │   │   ├── Hero.tsx
-│   │   │   │   ├── Features.tsx
-│   │   │   │   ├── HowItWorks.tsx
-│   │   │   │   ├── ProblemStatement.tsx
-│   │   │   │   ├── WhoIsItFor.tsx
-│   │   │   │   ├── CTA.tsx
-│   │   │   │   ├── Header.tsx
-│   │   │   │   └── Footer.tsx
-│   │   │   ├── Upload_components/
-│   │   │   │   ├── NewUploadInterface.tsx
-│   │   │   │   ├── NewInputPanel.tsx
-│   │   │   │   └── NewDisplayPanel.tsx
-│   │   │   └── Speech-to-text-components/
-│   │   │       └── SpeechToTextClient.tsx
-│   │   ├── hooks/                 # Custom React hooks
-│   │   └── utilities/            # Utility functions
-│   ├── package.json
-│   ├── tailwind.config.ts
-│   ├── tsconfig.json
-│   └── next.config.js
+│   │   ├── app/            # Next.js Pages (STT, Upload, Landing)
+│   │   ├── components/     # UI Components (Hero, Landing, Upload)
+│   │   ├── Animations/     # 3D Animation data (Alphabets, Words)
+│   │   │   ├── Alphabets/  # Hand-coded animations for single letters
+│   │   │   └── Words/      # Hand-coded animations for specific words
+│   │   ├── hooks/          # Three.js initialization and animation logic
+│   │   └── lib/            # Utility functions and shared helpers
+│   ├── next.config.ts      # Next.js configuration
+│   ├── package.json        # Frontend dependencies
+│   └── .env.local          # Frontend environment variables
 │
-├── backend/                       # Django backend application
-│   ├── Main/                     # Main Django app
-│   │   ├── views.py              # API views
-│   │   ├── urls.py               # URL routing
-│   │   ├── models.py             # Database models
-│   │   ├── admin.py              # Django admin config
-│   │   ├── apps.py               # App configuration
-│   │   ├── tests.py              # Tests
-│   │   ├── migrations/           # Database migrations
-│   │   ├── vocab/                # Vocabulary data
-│   │   │   ├── animation_words.txt   # 1,481 ASL words
-│   │   │   └── word_synonym_map.json # Synonym cache
-│   │   └── utils/                # Utility modules
-│   │       ├── glossifier.py         # Text to gloss conversion
-│   │       ├── translator.py         # Language translation
-│   │       ├── sign_to_text.py       # Sign language to text
-│   │       ├── video_transcriber.py  # Video audio extraction
-│   │       └── assemblyai_transcriber.py # Audio transcription
-│   ├── SignWave/                 # Legacy/signwave app
-│   ├── manage.py                 # Django management script
-│   ├── requirements.txt          # Python dependencies
-│   ├── setup_model.py            # Model setup script
-│   └── render.yaml               # Render deployment config
-│
-├── README.md                     # This file
-└── .gitignore                    # Git ignore rules
+└── README.md               # Project documentation
 ```
 
 ---
@@ -318,7 +284,7 @@ cd frontend
 2. **Install dependencies:**
 
 ```bash
-npm install
+npm install mime-types
 ```
 
 3. **Create environment variables:**
