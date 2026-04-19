@@ -1,82 +1,122 @@
 "use client";
 
 import React from 'react';
-import { Upload, Cpu, Play } from 'lucide-react';
+import { motion } from "motion/react";
+import { Upload, Cpu, Play, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const HowItWorks = () => {
-  const router  = useRouter();
+export default function HowItWorks() {
+  const router = useRouter();
 
   const steps = [
     {
       icon: Upload,
-      title: "Select or drag a file",
-      description: "Upload audio, video, or text files",
-      color: "blue"
+      title: "Input Source",
+      description: "Speak directly into your mic or upload audio/text files.",
+      details: ["Real-time Audio", "PDF/Text Docs", "Live Feed"]
     },
     {
       icon: Cpu,
-      title: "We transcribe and normalize",
-      description: "Our backend processes the input intelligently",
-      color: "purple"
+      title: "AI Processing",
+      description: "Our backend normalizes the text and maps it to sign glosses.",
+      details: ["NLP Mapping", "ISL Grammar", "Low Latency"]
     },
     {
       icon: Play,
-      title: "Watch 3D hands animate",
-      description: "See the translated sign language in real-time",
-      color: "green"
+      title: "3D Visualization",
+      description: "Watch the 3D avatar render fluid, accurate sign language.",
+      details: ["60 FPS Flow", "Clear Gestures", "Interactive View"]
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-20 px-8 bg-gradient-to-b from-gray-50 to-blue-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fadeInUp">
-            How It Works
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-            Simple, fast, and intuitive - get started in three easy steps
+    <section id="how-it-works" className="relative py-24 overflow-hidden border-t border-white/5">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-6"
+          >
+            <Zap className="h-3.5 w-3.5" />
+            Seamless Pipeline
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+          >
+            Engineered for <span className="text-gradient">precision</span>
+          </motion.h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            From raw audio to expressive 3D animations in milliseconds.
           </p>
         </div>
 
         <div className="relative">
-          {/* Connection Lines */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-purple-200 to-green-200 transform -translate-y-1/2"></div>
+          {/* Animated path line (Desktop only) */}
+          <div className="hidden md:block absolute top-[15%] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           
-          <div className="grid md:grid-cols-3 gap-8 relative z-10">
+          <div className="grid md:grid-cols-3 gap-12 relative z-10">
             {steps.map((step, index) => (
-              <div 
+              <motion.div 
                 key={index}
-                className="text-center animate-fadeInUp"
-                style={{ animationDelay: `${index * 0.3}s` }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="text-center group"
               >
-                <div className={`bg-${step.color}-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg`}>
-                  <step.icon className={`w-12 h-12 text-${step.color}-600`} />
+                <div className="relative mb-8 flex justify-center">
+                  <div className="h-24 w-24 rounded-[2rem] glass border border-white/10 flex items-center justify-center shadow-glow-sm group-hover:scale-110 transition-transform duration-500">
+                    <step.icon className="h-10 w-10 text-primary" />
+                    <div className="absolute -top-3 -right-3 h-8 w-8 rounded-full bg-background border border-white/10 flex items-center justify-center text-sm font-bold shadow-lg">
+                      {index + 1}
+                    </div>
+                  </div>
                 </div>
-                <div className={`bg-${step.color}-600 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg`}>
-                  {index + 1}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                <p className="text-gray-600 text-lg">{step.description}</p>
-              </div>
+
+                <h3 className="text-2xl font-semibold mb-4">{step.title}</h3>
+                <p className="text-muted-foreground mb-8 text-lg">{step.description}</p>
+                
+                <ul className="inline-block text-left space-y-2">
+                  {step.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm text-white/50">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 text-center flex gap-4 items-center justify-center">
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl animate-fadeInUp" style={{ animationDelay: '0.9s' }} onClick={() => router.push("/speech-to-text")}>
-            Real time speech-to-sign →
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-20 flex flex-wrap justify-center gap-6"
+        >
+          <button 
+            onClick={() => router.push("/speech-to-text")}
+            className="group inline-flex items-center gap-2 glass px-8 py-4 rounded-full text-sm font-medium hover:bg-white/10 transition-all"
+          >
+            Launch Live STT
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
-
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl animate-fadeInUp" style={{ animationDelay: '0.9s' }} onClick={() => router.push("/upload")}>
-            Upload your files →
+          
+          <button 
+            onClick={() => router.push("/upload")}
+            className="group inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full text-sm font-bold hover:bg-white/90 transition-all"
+          >
+            Start Translating Files
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default HowItWorks;
+}

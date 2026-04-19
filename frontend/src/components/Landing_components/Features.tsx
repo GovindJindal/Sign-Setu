@@ -1,67 +1,113 @@
 "use client";
 
 import React from 'react';
-import { FileText, Mic, Hand, FileImage } from 'lucide-react';
+import { motion } from "motion/react";
+import { FileText, Mic, Hand, Presentation, Sparkles, Languages, Cpu, Zap } from 'lucide-react';
 
-const Features = () => {
+export default function Features() {
   const features = [
     {
-      icon: FileText,
-      title: "Multi-format Input",
-      description: "Upload files in text, audio, or video format—we process them all.",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
       icon: Mic,
-      title: "Real-time Transcription",
-      description: "We transcribe spoken language using powerful speech-to-text models.",
-      gradient: "from-purple-500 to-pink-500"
+      title: "Real-time Voice to Sign",
+      description: "Our state-of-the-art STT engine captures spoken words and translates them into fluid sign language animations instantly.",
+      color: "primary"
     },
     {
-      icon: Hand,
-      title: "3D Sign Language Rendering",
-      description: "Hand gestures rendered in real-time using Three.js for a dynamic, clear representation.",
-      gradient: "from-green-500 to-teal-500"
+      icon: FileText,
+      title: "File-based Translation",
+      description: "Upload PDFs, text documents, or audio files and let SignSetu generate a comprehensive sign-language companion for your content.",
+      color: "accent"
     },
     {
-      icon: FileImage,
-      title: "Scripted Slide Generator (Coming soon!)",
-      description: "For long content, we auto-generate slides with gestures overlaid for better understanding. ",
-      gradient: "from-orange-500 to-red-500"
+      icon: Cpu,
+      title: "3D Animation Engine",
+      description: "Proprietary hand-tracking and rendering technology ensures movements are grammatically correct and culturally accurate to ISL.",
+      color: "primary"
+    },
+    {
+      icon: Presentation,
+      title: "Overlaid Scripting",
+      description: "Perfect for education: overlay 3D signing avatars directly onto your presentation slides or online study material.",
+      color: "accent"
     }
   ];
 
   return (
-    <section id="features" className="py-20 px-8 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fadeInUp">
-            What SignSetu Offers
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-            Cutting-edge technology to break down communication barriers and create inclusive experiences
-          </p>
+    <section id="features" className="relative py-24 overflow-hidden">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary mb-6"
+          >
+            <Zap className="h-3.5 w-3.5" />
+            Core Capabilities
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+          >
+            Bridge the gap with <span className="text-gradient">smarter tools</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
+            We've combined advanced natural language processing with high-fidelity 3D rendering to create the most intuitive translation experience.
+          </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeInUp"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative p-8 rounded-3xl glass border border-white/10 hover:border-primary/30 transition-all duration-500"
             >
-              <div className={`bg-gradient-to-r ${feature.gradient} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
-                <feature.icon className="w-8 h-8 text-white" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="relative z-10">
+                <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${
+                  feature.color === 'primary' ? 'bg-primary/20 text-primary' : 'bg-accent/20 text-accent'
+                } shadow-[0_0_20px_rgba(139,92,246,0.15)] group-hover:scale-110 transition-transform duration-500`}>
+                  <feature.icon className="h-7 w-7" />
+                </div>
+                
+                <h3 className="text-2xl font-semibold mb-4 flex items-center gap-3">
+                  {feature.title}
+                  {index === 3 && (
+                    <span className="text-[10px] uppercase tracking-widest bg-primary/20 text-primary px-2 py-0.5 rounded-full">beta</span>
+                  )}
+                </h3>
+                
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  {feature.description}
+                </p>
+
+                <div className="mt-8 flex items-center gap-4 text-xs font-medium text-white/40 uppercase tracking-widest">
+                  <div className="h-px flex-1 bg-white/5" />
+                  <span>Powered by SignSense</span>
+                  <div className="h-px flex-1 bg-white/5" />
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Background decoration */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
     </section>
   );
-};
-
-export default Features;
+}
