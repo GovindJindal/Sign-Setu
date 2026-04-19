@@ -1,4 +1,14 @@
-# Sign Setu
+<pre style="line-height: 1.2;">
+███████╗██╗██████╗ ███╗   ██╗         ██╗
+██╔════╝██║██╔════╝████╗  ██║        ██╔╝
+███████╗██║██║ ███╗██╔██╗ ██║ ██████████╗ ████████╗
+╚════██║██║██║   ██║██║╚██╗██║ ╚══██╔══██║ ╚══██╔══╝
+███████║██║╚██████╔╝██║ ╚████║ █████║  ██║    ██║
+╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚══██║  ██║ ██████╗
+                                  ██║  ██║ ██╔═██║
+                                  ╚═╝  ╚═╝ ╚█████║
+                                           ╚═════╝
+</pre>
 
 _Bridging communication between hearing individuals and the deaf/hard-of-hearing community_
 
@@ -274,13 +284,8 @@ Before you begin, ensure you have the following installed:
 cd frontend
 ```
 
-2. **Install dependencies:**
 
-```bash
-npm install mime-types
-```
-
-3. **Create environment variables:**
+2. **Create environment variables:**
 
 Create a `.env.local` file in the `frontend` directory:
 
@@ -288,6 +293,27 @@ Create a `.env.local` file in the `frontend` directory:
 # Optional: If connecting to a custom backend
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
+
+Create a `next-env.d.ts` file in the `frontend` directory:
+
+```bash
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+```
+
+3. **Install dependencies:**
+
+```bash
+npm install
+```
+
+```bash
+npm install mime-types
+```
+
 
 4. **Start the development server:**
 
@@ -349,19 +375,14 @@ ALLOWED_HOSTS=localhost,127.0.0.1
    - **AssemblyAI**: Sign up at [assemblyai.com](https://www.assemblyai.com/)
    - **OpenRouter**: Sign up at [openrouter.ai](https://openrouter.ai/)
 
-6. **Run database migrations:**
 
-```bash
-python manage.py migrate
-```
-
-7. **Start the development server:**
+6. **Start the development server:**
 
 ```bash
 python manage.py runserver
 ```
 
-8. **Verify the API:**
+7. **Verify the API:**
 
 Open [http://localhost:8000](http://localhost:8000) in your browser - you should see:
 ```json
@@ -379,42 +400,6 @@ Open [http://localhost:8000](http://localhost:8000) in your browser - you should
 | `DJANGO_SECRET_KEY` | Yes | Django secret key for security |
 | `DEBUG` | No | Set to `True` for development, `False` for production |
 | `ALLOWED_HOSTS` | No | Comma-separated list of allowed hosts |
-
----
-
-## Deployment
-
-### Frontend (Vercel)
-
-1. Push your code to a GitHub repository
-2. Go to [Vercel](https://vercel.com/)
-3. Import your repository
-4. Configure the build settings:
-   - Build Command: `npm run build`
-   - Output Directory: `.next`
-5. Add environment variables in Vercel dashboard
-6. Deploy
-
-### Backend (Render)
-
-1. Push your code to a GitHub repository
-2. Go to [Render](https://render.com/)
-3. Create a new Web Service
-4. Connect your GitHub repository
-5. Configure:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn SignWave.wsgi:application`
-6. Add environment variables
-7. Deploy
-
----
-
-## Live Demos
-
-- **Frontend**: [https://signsetu-ai-7vxu.vercel.app/](https://signsetu-ai-7vxu.vercel.app/)
-- **Backend**: [https://signsetu-ai.onrender.com/](https://signsetu-ai.onrender.com/)
-
-> **Note**: The backend is deployed on Render's free tier and falls asleep after 15 minutes of inactivity. The first request after sleep may take 30-60 seconds to wake up. Please be patient!
 
 ---
 
