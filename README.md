@@ -1,14 +1,26 @@
-# SignSetu
+<pre style="line-height: 1.2;">
+███████╗██╗██████╗ ███╗   ██╗         ██╗
+██╔════╝██║██╔════╝████╗  ██║        ██╔╝
+███████╗██║██║ ███╗██╔██╗ ██║ ██████████╗ ████████╗
+╚════██║██║██║   ██║██║╚██╗██║ ╚══██╔══██║ ╚══██╔══╝
+███████║██║╚██████╔╝██║ ╚████║ █████║  ██║    ██║
+╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚══██║  ██║ ██████╗
+                                  ██║  ██║ ██╔═██║
+                                  ╚═╝  ╚═╝ ╚█████║
+                                           ╚═════╝
+</pre>
 
 _Bridging communication between hearing individuals and the deaf/hard-of-hearing community_
 
 ![SignSetu Landing Page](./backend/images/landing-page.png)
 
+![SignSetu Text to ASL](./backend/images/text-upload.png)
+
 ![SignSetu Upload Interface](./backend/images/upload-video.png)
 
 ![SignSetu Speech-to-Text](./backend/images/audio-upload.png)
 
-![SignSetu Processing Text](./backend/images/processing-text.png)
+![SignSetu Processing Speech](./backend/images/processing-speech.png)
 
 ![SignSetu ASL Gloss Output](./backend/images/signs-rendered.png)
 
@@ -113,78 +125,35 @@ Sign Setu offers multiple input methods to convert your content into ASL gloss:
 ## Project Structure
 
 ```
-SignSetu_ai/
-├── frontend/                      # Next.js frontend application
+Sign-Setu/
+├── backend/                # Django REST Framework Backend
+│   ├── core/               # Main project settings and configuration
+│   ├── api/                # API endpoints for text processing/NLP
+│   ├── manage.py           # Django management script
+│   ├── requirements.txt    # Python dependencies
+│   └── .env                # Backend environment variables
+│
+├── frontend/               # Next.js Frontend (App Router)
+│   ├── public/             # Static assets
+│   │   └── models/         # 3D GLB models (xbot, ybot) for sign language
 │   ├── src/
-│   │   ├── app/                   # Next.js app directory
-│   │   │   ├── page.tsx           # Landing page
-│   │   │   ├── layout.tsx         # Root layout
-│   │   │   ├── globals.css        # Global styles
-│   │   │   ├── upload/            # Upload interface page
-│   │   │   │   └── page.tsx
-│   │   │   └── speech-to-text/    # Speech-to-text page
-│   │   │       └── page.tsx
-│   │   ├── components/            # React components
-│   │   │   ├── Landing_components/
-│   │   │   │   ├── Hero.tsx
-│   │   │   │   ├── Features.tsx
-│   │   │   │   ├── HowItWorks.tsx
-│   │   │   │   ├── ProblemStatement.tsx
-│   │   │   │   ├── WhoIsItFor.tsx
-│   │   │   │   ├── CTA.tsx
-│   │   │   │   ├── Header.tsx
-│   │   │   │   └── Footer.tsx
-│   │   │   ├── Upload_components/
-│   │   │   │   ├── NewUploadInterface.tsx
-│   │   │   │   ├── NewInputPanel.tsx
-│   │   │   │   └── NewDisplayPanel.tsx
-│   │   │   └── Speech-to-text-components/
-│   │   │       └── SpeechToTextClient.tsx
-│   │   ├── hooks/                 # Custom React hooks
-│   │   └── utilities/            # Utility functions
-│   ├── package.json
-│   ├── tailwind.config.ts
-│   ├── tsconfig.json
-│   └── next.config.js
+│   │   ├── app/            # Next.js Pages (STT, Upload, Landing)
+│   │   ├── components/     # UI Components (Hero, Landing, Upload)
+│   │   ├── Animations/     # 3D Animation data (Alphabets, Words)
+│   │   │   ├── Alphabets/  # Hand-coded animations for single letters
+│   │   │   └── Words/      # Hand-coded animations for specific words
+│   │   ├── hooks/          # Three.js initialization and animation logic
+│   │   └── lib/            # Utility functions and shared helpers
+│   ├── next.config.ts      # Next.js configuration
+│   ├── package.json        # Frontend dependencies
+│   └── .env.local          # Frontend environment variables
 │
-├── backend/                       # Django backend application
-│   ├── Main/                     # Main Django app
-│   │   ├── views.py              # API views
-│   │   ├── urls.py               # URL routing
-│   │   ├── models.py             # Database models
-│   │   ├── admin.py              # Django admin config
-│   │   ├── apps.py               # App configuration
-│   │   ├── tests.py              # Tests
-│   │   ├── migrations/           # Database migrations
-│   │   ├── vocab/                # Vocabulary data
-│   │   │   ├── animation_words.txt   # 1,481 ASL words
-│   │   │   └── word_synonym_map.json # Synonym cache
-│   │   └── utils/                # Utility modules
-│   │       ├── glossifier.py         # Text to gloss conversion
-│   │       ├── translator.py         # Language translation
-│   │       ├── sign_to_text.py       # Sign language to text
-│   │       ├── video_transcriber.py  # Video audio extraction
-│   │       └── assemblyai_transcriber.py # Audio transcription
-│   ├── SignWave/                 # Legacy/signwave app
-│   ├── manage.py                 # Django management script
-│   ├── requirements.txt          # Python dependencies
-│   ├── setup_model.py            # Model setup script
-│   └── render.yaml               # Render deployment config
-│
-├── README.md                     # This file
-└── .gitignore                    # Git ignore rules
+└── README.md               # Project documentation
 ```
 
 ---
 
 ## API Documentation
-
-### Base URL
-
-```
-Production: https://signsetu-ai.onrender.com
-Development: http://localhost:8000
-```
 
 ### Endpoints
 
@@ -315,13 +284,8 @@ Before you begin, ensure you have the following installed:
 cd frontend
 ```
 
-2. **Install dependencies:**
 
-```bash
-npm install
-```
-
-3. **Create environment variables:**
+2. **Create environment variables:**
 
 Create a `.env.local` file in the `frontend` directory:
 
@@ -329,6 +293,27 @@ Create a `.env.local` file in the `frontend` directory:
 # Optional: If connecting to a custom backend
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
+
+Create a `next-env.d.ts` file in the `frontend` directory:
+
+```bash
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+```
+
+3. **Install dependencies:**
+
+```bash
+npm install
+```
+
+```bash
+npm install mime-types
+```
+
 
 4. **Start the development server:**
 
@@ -390,19 +375,14 @@ ALLOWED_HOSTS=localhost,127.0.0.1
    - **AssemblyAI**: Sign up at [assemblyai.com](https://www.assemblyai.com/)
    - **OpenRouter**: Sign up at [openrouter.ai](https://openrouter.ai/)
 
-6. **Run database migrations:**
 
-```bash
-python manage.py migrate
-```
-
-7. **Start the development server:**
+6. **Start the development server:**
 
 ```bash
 python manage.py runserver
 ```
 
-8. **Verify the API:**
+7. **Verify the API:**
 
 Open [http://localhost:8000](http://localhost:8000) in your browser - you should see:
 ```json
@@ -420,42 +400,6 @@ Open [http://localhost:8000](http://localhost:8000) in your browser - you should
 | `DJANGO_SECRET_KEY` | Yes | Django secret key for security |
 | `DEBUG` | No | Set to `True` for development, `False` for production |
 | `ALLOWED_HOSTS` | No | Comma-separated list of allowed hosts |
-
----
-
-## Deployment
-
-### Frontend (Vercel)
-
-1. Push your code to a GitHub repository
-2. Go to [Vercel](https://vercel.com/)
-3. Import your repository
-4. Configure the build settings:
-   - Build Command: `npm run build`
-   - Output Directory: `.next`
-5. Add environment variables in Vercel dashboard
-6. Deploy
-
-### Backend (Render)
-
-1. Push your code to a GitHub repository
-2. Go to [Render](https://render.com/)
-3. Create a new Web Service
-4. Connect your GitHub repository
-5. Configure:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn SignWave.wsgi:application`
-6. Add environment variables
-7. Deploy
-
----
-
-## Live Demos
-
-- **Frontend**: [https://signsetu-ai-7vxu.vercel.app/](https://signsetu-ai-7vxu.vercel.app/)
-- **Backend**: [https://signsetu-ai.onrender.com/](https://signsetu-ai.onrender.com/)
-
-> **Note**: The backend is deployed on Render's free tier and falls asleep after 15 minutes of inactivity. The first request after sleep may take 30-60 seconds to wake up. Please be patient!
 
 ---
 

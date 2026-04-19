@@ -18,7 +18,7 @@ headers = {
 
 def upload_audio(file_path):
     with open(file_path, 'rb') as f:
-        response = requests.post(upload_endpoint, headers={"authorization": ASSEMBLYAI_API_KEY}, files={"file": f})
+        response = requests.post(upload_endpoint, headers={"authorization": ASSEMBLYAI_API_KEY}, data=f)
     response.raise_for_status()
     return response.json()['upload_url']
 
@@ -26,12 +26,15 @@ def transcribe_audio(file_path):
     upload_url = upload_audio(file_path)
 
     transcript_request = {
-        "audio_url": upload_url
+        "audio_url": upload_url,
+        "speech_models": ["universal-2"]
     }
 
     transcript_response = requests.post(transcript_endpoint, json=transcript_request, headers=headers)
-    transcript_id = transcript_response.json()['id']
-
+    resp_json = transcript_response.json()
+    if 'id' not in resp_json:
+        raise Exception(f"AssemblyAI Error: {transcript_response.text}")
+    transcript_id = resp_json['id']
     # Polling until transcription is complete
     while True:
         polling_response = requests.get(f"{transcript_endpoint}/{transcript_id}", headers=headers)

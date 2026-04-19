@@ -17,7 +17,7 @@ const ref = {
   avatar: null,
   speed: 0.12, // Faster default
   pause: 100,  // Much lower default gap
-  animate: null // function ref
+  animate: () => {} // function ref (prevents crash on hot-reload)
 };
 
 export function setAnimationSpeed(val) {

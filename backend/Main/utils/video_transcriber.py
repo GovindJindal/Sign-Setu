@@ -20,7 +20,7 @@ def transcribe_audio_assemblyai(audio_url):
         "authorization": ASSEMBLYAI_API_KEY,
         "content-type": "application/json"
     }
-    transcript_request = {"audio_url": audio_url}
+    transcript_request = {"audio_url": audio_url, "speech_models": ["universal-2"]}
     response = requests.post("https://api.assemblyai.com/v2/transcript", json=transcript_request, headers=headers)
     response.raise_for_status()
     transcript_id = response.json()['id']

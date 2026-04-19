@@ -29,7 +29,6 @@ export default function NewInputPanel({ setData }: ChildProps) {
     { value: "text",  label: "Text",  icon: FileText, color: "from-blue-500 to-cyan-500" },
     { value: "audio", label: "Audio", icon: Mic,      color: "from-purple-500 to-pink-500" },
     { value: "video", label: "Video", icon: Video,    color: "from-green-500 to-emerald-500" },
-    { value: "translate",  label: "Translate",  icon: Upload,   color: "from-orange-500 to-red-500" },
   ];
 
   function handleCategorySelect(category: string) {
@@ -118,10 +117,10 @@ export default function NewInputPanel({ setData }: ChildProps) {
             Text runs instantly in your browser — no server needed
           </div>
         )}
-        {(inputData.category === 'audio' || inputData.category === 'video' || inputData.category === 'translate') && (
+        {(inputData.category === 'audio' || inputData.category === 'video') && (
           <div className="flex items-center gap-2 text-xs text-yellow-400 bg-yellow-400/10 rounded-full px-3 py-1 w-fit">
             <Loader2 className="w-3 h-3" />
-            Audio/Video/Translate uses the server — first request may take 30–60s to wake up
+            Audio/Video uses the server — first request may take 30–60s to wake up
           </div>
         )}
       </div>
@@ -132,7 +131,7 @@ export default function NewInputPanel({ setData }: ChildProps) {
           <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
           Select Input Type
         </h3>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {categories.map((item) => (
             <button
               key={item.value}
@@ -192,7 +191,7 @@ export default function NewInputPanel({ setData }: ChildProps) {
       )}
 
       {/* File Upload — uses backend */}
-      {inputData && (inputData.category === "audio" || inputData.category === "video" || inputData.category === "translate") && (
+      {inputData && (inputData.category === "audio" || inputData.category === "video") && (
         <div className="relative z-10">
           <div
             className="bg-white/5 backdrop-blur-sm rounded-2xl border-2 border-dashed border-white/30 p-10 text-center hover:border-white/50 hover:bg-white/10 transition-all duration-500 group cursor-pointer relative overflow-hidden"

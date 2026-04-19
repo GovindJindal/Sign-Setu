@@ -40,9 +40,19 @@
   "hain": "hain",
   "kaisa": "kaisa",
   "hai": "hai",
+<<<<<<< HEAD
   "mera": "mera",
   "naam": "naam",
   "dev": "dev",
   "kabir": "kabir",
   "namaskar": "namaskar"
+=======
+  "refresh": "refresh",
+  "\u0939\u0947\u0932\u094b": "\u0939\u0947\u0932\u094b",
+  "\u0939\u0947\u0932\u094b,": "\u0939\u0947\u0932\u094b,",
+  "\u0935\u0928": "forest",
+  "\u091f\u0942": "two",
+  "\u0925\u094d\u0930\u0940": "three",
+  "\u0939\u0947\u0932\u094b\u0964": "\u0939\u0947\u0932\u094b\u0964"
+>>>>>>> 50d2230b035b470ff2b83080525f86c6c2b8119d
 }
