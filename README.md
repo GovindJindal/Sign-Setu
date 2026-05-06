@@ -47,7 +47,7 @@ _Bridging communication between hearing individuals and the deaf/hard-of-hearing
 
 ## About
 
-Sign Setu is a web application designed to bridge the communication gap between hearing individuals and the deaf/hard-of-hearing community. The platform converts text, audio, and video input into American Sign Language (ASL) gloss notation, making it easier for anyone to communicate effectively and inclusively.
+Sign Setu is a web application designed to bridge the communication gap between hearing individuals and the deaf/hard-of-hearing community. The platform converts text, audio, and video input into Indian Sign Language (ISL) gloss notation, making it easier for anyone to communicate effectively and inclusively.
 
 Whether you want to convert spoken words from an audio file, transcribe video content, or simply type text to be translated into ASL-compatible gloss, Sign Setu provides a seamless solution.
 
