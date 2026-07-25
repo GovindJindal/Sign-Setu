@@ -7,7 +7,6 @@ if (typeof global !== "undefined" && typeof global.localStorage !== "undefined")
 }
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
   trailingSlash: true,
   images: {
     unoptimized: true
