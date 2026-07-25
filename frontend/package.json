@@ -15,7 +15,7 @@
     "lucide-react": "^0.518.0",
     "mime-types": "^3.0.2",
     "motion": "^12.19.1",
-    "next": "15.3.4",
+    "next": "^16.2.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-speech-to-text": "^0.8.0",

@@ -5,8 +5,7 @@ if (typeof global !== "undefined" && typeof global.localStorage !== "undefined")
     delete (global as any).localStorage;
   } catch (e) {}
 }
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
