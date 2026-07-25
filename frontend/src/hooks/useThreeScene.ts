@@ -11,9 +11,11 @@ export function useThreeScene(containerId: string, labelId: string) {
     flag: false,
     pending: false,
     animations: [] as any[],
+    characters: [] as any[],
     avatar: null as any,
     speed: 0.12,
     pause: 100,
+    animate: () => {}, // No-op function to prevent legacy scripts from crashing
   });
 
   const sceneCtxRef = useRef<SceneContext | null>(null);
@@ -56,9 +58,11 @@ export function useThreeScene(containerId: string, labelId: string) {
     };
 
     loadAvatar(sceneCtx, stateRef.current, () => {
-      setIsInitialized(true);
-      animationFrameRef.current = requestAnimationFrame(renderLoop);
+      // Avatar is loaded and added to scene
     });
+    
+    setIsInitialized(true);
+    animationFrameRef.current = requestAnimationFrame(renderLoop);
 
     return () => {
       if (animationFrameRef.current !== null) {
