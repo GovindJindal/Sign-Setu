@@ -14,7 +14,7 @@ import { Hand, Heart, Sparkles, Star, Target, Zap } from "lucide-react";
 export default function NewUploadInterface() {
 
     const [data,setData] = useState<string[] | null>(null);
-    console.log("Data reached in Parent: "+ data);
+
 
    return (
     <div className="min-h-screen bg-slate-900 relative overflow-hidden">

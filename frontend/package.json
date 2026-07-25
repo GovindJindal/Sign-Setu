@@ -12,7 +12,6 @@
     "@tabler/icons-react": "^3.34.0",
     "axios": "^1.10.0",
     "clsx": "^2.1.1",
-    "fs": "^0.0.1-security",
     "lucide-react": "^0.518.0",
     "mime-types": "^3.0.2",
     "motion": "^12.19.1",

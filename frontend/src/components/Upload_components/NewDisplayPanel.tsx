@@ -1,6 +1,6 @@
 "use client";
 
-import { NewThree, updateWordList } from "@/hooks/NewMain";
+import { useThreeScene } from "@/hooks/useThreeScene";
 import { Activity, Eye, Sparkles, Volume2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -15,40 +15,18 @@ interface ChildProps {
 }
 
 export function NewDisplayPanel({ data }: ChildProps) {
-  const [isThreeJSInitialized, setIsThreeJSInitialized] = useState(false);
+  const { isInitialized: isThreeJSInitialized, queueWords, setSpeed } = useThreeScene("container", "label");
   const [currentWord, setCurrentWord] = useState<string>("READY");
   const [isPlaying, setIsPlaying] = useState(false);
 
-  console.log("Data reached in DisplayPanel: " + data);
 
-  useEffect(() => {
-    const initializeThreeJS = () => {
-      try {
-        console.log("Initializing Three.js...");
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const { setAnimationSpeed } = require("@/hooks/NewMain");
-        setAnimationSpeed(0.08); // Initialize default speed and gap
-        NewThree("label", "container");
-        setIsThreeJSInitialized(true);
-        console.log("Three.js initialized successfully");
-      } catch (error) {
-        console.error("Failed to initialize Three.js:", error);
-      }
-    };
 
-    // Only initialize once when component mounts
-    initializeThreeJS();
 
-    return () => {
-      // cleanup();
-      setIsThreeJSInitialized(false);
-    };
-  }, []);
 
   useEffect(() => {
     const SendingWord = () => {
       if (data && data.length > 0) {
-        updateWordList(data);
+        queueWords(data);
         setIsPlaying(true);
         setCurrentWord(data[0] || "PROCESSING");
       }

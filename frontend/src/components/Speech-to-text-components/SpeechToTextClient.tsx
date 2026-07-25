@@ -6,7 +6,7 @@
 //   renderHandsFromData,
 //   setWordList,
 // } from "@/hooks/Main";
-import { NewThree, updateWordList } from "@/hooks/NewMain";
+import { useThreeScene } from "@/hooks/useThreeScene";
 import axios from "axios";
 import {
   Activity,
@@ -47,73 +47,18 @@ export default function SpeechToTextClient() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [processing, setIsProcessing] = useState(false);
 
-  const [isThreeJSInitialized, setIsThreeJSInitialized] = useState(false);
+  const { isInitialized: isThreeJSInitialized, queueWords } = useThreeScene("container", "label");
   // tracking words sent to backend
   const sentWordsRef = useRef<Set<string>>(new Set());
-  console.log(DjangoData);
 
-  //   // Initialize Three.js after component mounts
-  //   useEffect(() => {
-  //     const initializeThreeJS = () => {
-  //       try {
-  //         // if (DjangoData.length > 0 && isThreeJSInitialized) {
-  //         console.log("Processing Django data:", DjangoData);
-  //         console.log("Initializing Three.js...");
 
-  //         NewThree("container", "label", DjangoData);
 
-  //         setIsThreeJSInitialized(true);
-  //         console.log("Three.js initialized successfully");
-  //         // }
-  //       } catch (error) {
-  //         console.error("Failed to initialize Three.js:", error);
-  //       }
-  //     };
 
-  //     // Small delay to ensure DOM elements are ready
-  //     const timer = setTimeout(initializeThreeJS, 100);
-
-  //     return () => {
-  //       clearTimeout(timer);
-  //       cleanup();
-  //       setIsThreeJSInitialized(false);
-  //     };
-  //   }, [DjangoData]);
-
-  // Handle Django data and update word list - NOW USING renderHandsFromData
-  //   useEffect(() => {
-  //     if (DjangoData.length > 0 && isThreeJSInitialized) {
-  //       console.log("Processing Django data:", DjangoData);
-  //       // Use the exported function to handle the data properly
-  //       renderHandsFromData(DjangoData);
-  //     }
-  //   }, [DjangoData, isThreeJSInitialized]);
-
-  useEffect(() => {
-    const initializeThreeJS = () => {
-      try {
-        console.log("Initializing Three.js...");
-        NewThree("label", "container");
-        setIsThreeJSInitialized(true);
-        console.log("Three.js initialized successfully");
-      } catch (error) {
-        console.error("Failed to initialize Three.js:", error);
-      }
-    };
-
-    // Only initialize once when component mounts
-    initializeThreeJS();
-
-    return () => {
-      // cleanup();
-      setIsThreeJSInitialized(false);
-    };
-  }, []);
 
   useEffect(() => {
     const SendingWord = () => {
       if (DjangoData.length > 0) {
-        updateWordList(DjangoData);
+        queueWords(DjangoData);
         setIsPlaying(true);
       }
     };
@@ -143,7 +88,7 @@ export default function SpeechToTextClient() {
 
       // Send each new word to the backend
       newWords.forEach((word) => {
-        console.log("sending to backend:   " + word);
+
         sendToBackend(word);
         setIsProcessing(true);
       });
@@ -152,7 +97,7 @@ export default function SpeechToTextClient() {
 
   const sendToBackend = async (word: string) => {
     try {
-      console.log(word);
+
 
       const formData = new FormData(); // As Django backend accepts from-data instead of json
       formData.append("category", "text");
@@ -163,10 +108,9 @@ export default function SpeechToTextClient() {
         `${API_URL}/api/process/`,
         formData
       );
-
-      console.log(response);
       setDjangodata(response.data.gloss);
-      console.log("Backend response:", response.data);
+
+
     } catch (error) {
       console.error("Error sending word to backend:", error);
     } finally {
